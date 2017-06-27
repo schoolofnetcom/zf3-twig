@@ -16,4 +16,28 @@ return [
         'driver'=>'Pdo',
         'dsn' => sprintf('sqlite:%s/data/blog.db', realpath(getcwd()))
     ]*/
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home'
+            ],
+            [
+                'label' => 'Blog',
+                'route' => 'admin-blog/post',
+                'action' => 'add'
+            ]
+        ],
+        /*'admin' => [
+
+        ],
+        'rh' => [
+
+        ]*/
+    ],
+    'service_manager' => [
+        'factories' => [
+            'navigation' => \Zend\Navigation\Service\DefaultNavigationFactory::class
+        ]
+    ]
 ];

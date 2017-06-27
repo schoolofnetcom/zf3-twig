@@ -7,6 +7,7 @@ use Zend\Authentication\AuthenticationServiceInterface;
 use Zend\Authentication\Adapter\DbTable\CallbackCheckAdapter;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use ZendTwig\View\TwigModel;
 
 class AuthController extends AbstractActionController
 {
@@ -46,10 +47,16 @@ class AuthController extends AbstractActionController
                 }
             }
         }
-        return new ViewModel([
+        $viewModel = new TwigModel([
             'form' => $form,
             'messageError' => $messageError
         ]);
+        $viewModel->setTerminal(true);
+        return $viewModel;
+        /*return new ViewModel([
+            'form' => $form,
+            'messageError' => $messageError
+        ]);*/
     }
 
     public function logoutAction()

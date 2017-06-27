@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use ZendTwig\View\TwigModel;
 
 class BlogController extends AbstractActionController
 {
@@ -47,7 +48,8 @@ class BlogController extends AbstractActionController
         $request = $this->getRequest();
 
         if (!$request->isPost()) {
-            return ['form' => $form];
+            //return ['form' => $form];
+            return new TwigModel(['form' => $form]);
         }
 
         $form->setData($request->getPost());
